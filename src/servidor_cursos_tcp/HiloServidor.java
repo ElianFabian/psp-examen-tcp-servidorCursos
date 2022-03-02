@@ -125,7 +125,7 @@ public class HiloServidor extends Thread
                 }
                 // </editor-fold>
 
-                // <editor-fold desc="Nuevo curso" defaultstate="collapsed">
+                // <editor-fold desc="Nuevo curso - NUEVOCUR $curso" defaultstate="collapsed">
                 if ((m = patNuevoCurso.matcher(lineaRecibida)).matches())
                 {
                     var curso = m.group(1);
@@ -136,7 +136,7 @@ public class HiloServidor extends Thread
                 }
                 // </editor-fold>
 
-                // <editor-fold desc="Nuevo alumno" defaultstate="collapsed">
+                // <editor-fold desc="Nuevo alumno - NUEVOAL $alumno" defaultstate="collapsed">
                 else if ((m = patNuevoAlumno.matcher(lineaRecibida)).matches())
                 {
                     var alumno = m.group(1);
@@ -147,21 +147,21 @@ public class HiloServidor extends Thread
                 }
                 // </editor-fold>
 
-                // <editor-fold desc="Consultar lista alumnos" defaultstate="collapsed">
+                // <editor-fold desc="Consultar lista cursos - ?CUR" defaultstate="collapsed">
+                else if (lineaRecibida.equals(STR_CUR))
+                {
+                    bwACliente.write(matriculaciones.getListaAlumnosPorCurso());
+                }
+                // </editor-fold>
+                
+                // <editor-fold desc="Consultar lista alumnos - ?AL" defaultstate="collapsed">
                 else if (lineaRecibida.equals(STR_AL))
                 {
                     bwACliente.write(matriculaciones.getListaAlumnos());
                 }
                 // </editor-fold>
 
-                // <editor-fold desc="Consultar lista cursos" defaultstate="collapsed">
-                else if (lineaRecibida.equals(STR_CUR))
-                {
-                    bwACliente.write(matriculaciones.getListaAlumnosPorCurso());
-                }
-                // </editor-fold>
-
-                // <editor-fold desc="Matricular" defaultstate="collapsed">
+                // <editor-fold desc="Matricular - MATRIC $curso" defaultstate="collapsed">
                 else if ((m = patNuevaMatricula.matcher(lineaRecibida)).matches())
                 {
                     cursoActual = m.group(1);
@@ -176,7 +176,7 @@ public class HiloServidor extends Thread
 
                 break;
             case MATRIC:
-                // <editor-fold desc="Matricular" defaultstate="collapsed">
+                // <editor-fold desc="Matricular - (Se introducen alumnos separados por salto de línea." defaultstate="collapsed">
                 if (lineaRecibida.matches(strPatAlumno))
                 {
                     var alumno = lineaRecibida;
@@ -201,8 +201,7 @@ public class HiloServidor extends Thread
                 }
                 // </editor-fold>
 
-                //<editor-fold desc="Finalizar estado" defaultstate="collapsed">
-                // Cuando se presiona ENTER sin escribir nada se vuelve al estado NORMAL
+                //<editor-fold desc="Finalizar estado - "PRESIONAR ENTER" defaultstate="collapsed">
                 else if (lineaRecibida.length() == 0) estado = Estado.INCIAL;
                 //</editor-fold>
 
