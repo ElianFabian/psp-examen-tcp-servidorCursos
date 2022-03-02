@@ -92,11 +92,13 @@ public class Matriculaciones
         {
             lista += curso + ":";
             var sep = "";
+            
             for (var alumno : alumnosPorCurso.get(curso))
             {
                 lista += sep + alumno;
                 sep = ";";
             }
+            
             lista += "\n";
         }
         return lista;
