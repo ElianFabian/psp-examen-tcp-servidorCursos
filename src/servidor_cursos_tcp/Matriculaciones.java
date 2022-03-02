@@ -25,6 +25,7 @@ public class Matriculaciones
 
             return false;
         }
+        
         return true; // Devuelve verdad si existe el curso
     }
 
@@ -36,6 +37,7 @@ public class Matriculaciones
 
             return false;
         }
+        
         return true; // Devuelve verdad si existe el alumno
     }
 
@@ -59,28 +61,32 @@ public class Matriculaciones
             {
                 alumnosPorCurso.put(curso, new ArrayList<>());
             }
+            
             alumnosPorCurso.get(curso).add(alumno);
         }
     }
 
     public synchronized String getListaAlumnos()
     {
-        String lista = "";
+        var lista = "";
+        
         for (var item : alumnos)
         {
             lista += item + "\n";
         }
+        
         return lista;
     }
 
     public synchronized String getListaCursos()
     {
-        String lista = "";
+        var lista = "";
 
         for (var item : cursos)
         {
             lista += item + "\n";
         }
+        
         return lista;
     }
 
@@ -101,6 +107,7 @@ public class Matriculaciones
             
             lista += "\n";
         }
+        
         return lista;
     }
 
