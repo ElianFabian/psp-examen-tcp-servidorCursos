@@ -175,6 +175,7 @@ public class HiloServidor extends Thread
                 else error = true;
 
                 break;
+
             case MATRIC:
                 // <editor-fold desc="Matricular - (Se introducen alumnos separados por salto de línea." defaultstate="collapsed">
                 if (lineaRecibida.matches(strPatAlumno))
