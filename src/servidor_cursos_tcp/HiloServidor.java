@@ -188,8 +188,8 @@ public class HiloServidor extends Thread
                     }
                     else
                     {
-                        var alumnoMatriculadoEnCurso = matriculaciones.estaAlumnoMatriculado(alumno, cursoActual);
-                        if (alumnoMatriculadoEnCurso)
+                        var estaAlumnoMatriculadoEnCurso = matriculaciones.estaAlumnoMatriculado(alumno, cursoActual);
+                        if (estaAlumnoMatriculadoEnCurso)
                         {
                             bwACliente.write(STR_WARN_YAMAT + alumno + " " + cursoActual);
                         }
